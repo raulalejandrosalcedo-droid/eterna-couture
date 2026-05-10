@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Alejandra Salcedo Couture — Design Tokens
+   Fuente: ASC_Brandbook_Web.md
+   ============================================================ */
+
+:root {
+  /* ——— PALETA DE COLOR ——— */
+  --color-lino: #b7b4a2;
+  --color-tierra: #808274;
+  --color-rosa: #c79a96;
+  --color-noche: #42373a;
+  --color-petalo: #dfc1b8;
+
+  --color-marfil: #f7f3ee;
+  --color-dorado: #b7a060;
+  --color-negro: #1a1614;
+  --color-gris: #9e9890;
+  --color-alerta: #8b4a42;
+
+  /* Semántica */
+  --bg-primary: var(--color-marfil);
+  --bg-secondary: #f0ebe4;
+  --text-primary: var(--color-negro);
+  --text-secondary: var(--color-tierra);
+  --accent: var(--color-dorado);
+  --accent-soft: var(--color-petalo);
+  --border: #e8e0d5;
+
+  /* ——— TIPOGRAFÍA ——— */
+  --font-display: 'Cormorant Garamond', 'Garamond', serif;
+  --font-body: 'EB Garamond', 'Garamond', serif;
+  --font-ui: 'Raleway', system-ui, sans-serif;
+
+  /* ——— ANIMACIONES ——— */
+  --ease-brand: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-slow: 0.8s;
+  --duration-medium: 0.5s;
+  --duration-fast: 0.3s;
+
+  /* ——— OVERLAYS ——— */
+  --overlay-hero: rgba(66, 55, 58, 0.25);
+  --overlay-dark: rgba(26, 22, 20, 0.7);
+  --nav-bg: rgba(247, 243, 238, 0.95);
+}
+
+/* ============================================================
+   Reset y base
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+::selection {
+  background-color: var(--accent-soft);
+  color: var(--color-noche);
+}
+
+/* ============================================================
+   Tipografía editorial
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 3.052rem; line-height: 1.1; }
+h2 { font-size: 2.441rem; line-height: 1.2; }
+h3 { font-size: 1.953rem; line-height: 1.3; }
+h4 { font-size: 1.563rem; line-height: 1.4; }
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.441rem; }
+  h2 { font-size: 1.953rem; }
+  h3 { font-size: 1.563rem; }
+}
+
+.font-wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Componentes utilitarios
+   ============================================================ */
+
+.container-content {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-content {
+    padding-inline: 3rem;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-ui);
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--duration-medium) var(--ease-brand);
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: var(--color-marfil);
+  background: var(--color-noche);
+  border-color: var(--color-noche);
+}
+
+.btn-primary:hover {
+  background: var(--color-negro);
+  border-color: var(--color-negro);
+}
+
+.btn-ghost {
+  color: var(--color-noche);
+  border-color: var(--color-noche);
+}
+
+.btn-ghost:hover {
+  background: var(--color-noche);
+  color: var(--color-marfil);
+}
+
+.btn-gold {
+  color: var(--color-noche);
+  border-color: var(--accent);
+}
+
+.btn-gold:hover {
+  background: var(--accent);
+  color: var(--color-marfil);
+}
+
+/* Reveal animation utility */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp var(--duration-slow) var(--ease-brand) both;
+}
+
+/* Focus state accesible */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
