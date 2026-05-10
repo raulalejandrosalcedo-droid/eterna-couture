@@ -11,8 +11,12 @@ export default function NewsletterForm() {
     if (!email) return;
     setStatus('sending');
     try {
-      // TODO: conectar a Mailchimp / Kit / Resend
-      await new Promise((r) => setTimeout(r, 800));
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('Error');
       setStatus('sent');
       setEmail('');
     } catch {

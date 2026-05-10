@@ -22,8 +22,17 @@ export default function WaitlistForm() {
     if (!email || !name) return;
     setStatus('sending');
     try {
-      // TODO: Conectar con Resend / Mailchimp / Sanity
-      await new Promise((r) => setTimeout(r, 800));
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          occasion: occasion || undefined,
+          city: city || undefined,
+        }),
+      });
+      if (!res.ok) throw new Error('Error');
       setStatus('sent');
       setName('');
       setEmail('');

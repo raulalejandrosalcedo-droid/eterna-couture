@@ -37,8 +37,22 @@ export default function ContactForm() {
     if (!formData.email || !formData.name || !formData.consent) return;
     setStatus('sending');
     try {
-      // TODO: Conectar con Resend API. Endpoint sugerido: /api/contact
-      await new Promise((r) => setTimeout(r, 1000));
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || undefined,
+          city: formData.city || undefined,
+          occasion: formData.occasion || undefined,
+          pieceType: formData.pieceType || undefined,
+          eventDate: formData.eventDate || undefined,
+          budget: formData.budget || undefined,
+          message: formData.message || undefined,
+        }),
+      });
+      if (!res.ok) throw new Error('Error en el envío');
       setStatus('sent');
     } catch {
       setStatus('error');
