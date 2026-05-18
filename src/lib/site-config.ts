@@ -10,8 +10,8 @@ export const siteConfig = {
   tagline: 'Alta costura con alma, creada en Barcelona para momentos que merecen permanecer.',
   description:
     'Alta costura con propósito en Barcelona. Vestidos que eternizan momentos únicos, creados con moulage artesanal y tejidos nobles.',
-  url: 'https://www.eternacouture.com',
-  email: 'hola@eternacouture.com',
+  url: 'https://alejandrasalcedo.com',
+  email: 'hola@alejandrasalcedo.com',
   emailLegacy: 'alejandrasalcedodigital@gmail.com',
   city: 'Barcelona',
   ogImage: '/images/hero-contemplacion-portico.jpg',
